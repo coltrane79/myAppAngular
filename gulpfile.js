@@ -1,11 +1,11 @@
 var gulp = require('gulp');
-var jshint
+var concat = require('gulp-concat');
 
 gulp.task('default', function(){
 
-  return gulp.src('client/*.js')
+  return gulp.src('./client/*.js')
   .pipe(concat('bundle.js'))
-  .pipe(gulp.dest('dist'));
+  .pipe(gulp.dest('./dist'));
 
 });
 
