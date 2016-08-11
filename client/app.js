@@ -1,3 +1,3 @@
-import angular from 'angular'
+require('angular')
 
 angular.module('demoApp',[]);
