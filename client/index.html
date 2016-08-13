@@ -3,9 +3,9 @@
     <head>
       <meta charset="utf-8">
       <title>Mean App</title>
-      <script src="dist/bundle.js"></script>
     </head>
-    <body>
-      <h1>Hello World</h1>
+    <body ng-controller="appController as empl">
+      <h1> {{ empl.people.name }} </h1>
     </body>
+    <script src="dist/bundle.js"></script>
   </html>
