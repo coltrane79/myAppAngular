@@ -32,6 +32,10 @@ app.controller('appController', function(){
   };
 });
 
+app.controller('basicController', function(){
+  
+});
+
 },{"angular":3}],2:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.8

@@ -30,3 +30,7 @@ app.controller('appController', function(){
     }
   };
 });
+
+app.controller('basicController', function(){
+  
+});

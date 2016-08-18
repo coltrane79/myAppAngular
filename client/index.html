@@ -18,15 +18,19 @@
           <li><a ng-click="empl.setTab(4)">Job / Position Information </a></li>
           <li>{{empl.tab}}</li>
         </ul>
-        <div id="basic" ng-show="empl.isSet(0)">
+        <div id="basic" ng-show="empl.isSet(0)" ng-controller="basicController as person">
           <p>{{empl.people.name}}</p>
           <p>{{empl.people.last}}</p>
           <p>{{empl.people.DOB | date: yyyy/mm/dd }}</p>
-          <p>{{empl.people.gender}}
+          <p>{{empl.people.gender}}</p>
+            <button class="button">Change</button>
+        </div>
+        <div id="basic" ng-show="empl.isSet(1)">
+          <p>{{empl.people.Address.street}}</p>
+          <p>{{empl.people.Address.number}}</p>
+          <p>{{empl.people.Address.City}}</p>
         </div>
       </div>
-
-
     </body>
     <script src="dist/bundle.js"></script>
   </html>
