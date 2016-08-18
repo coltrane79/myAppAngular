@@ -13,16 +13,8 @@ gulp.task('default', function(){
   .bundle()
   .pipe(source('bundle.js'))
   .pipe(gulp.dest('./client/dist'));
-  //return gulp.src('./client/*.js')
-  //.pipe(concat('bundle.js'))
-  //.pipe(gulp.dest('./client/dist'));
 });
 
-//gulp.task('lint', function(){
-//  return gulp.src('./client/app.js')
-//  .pipe(jshint())
-//  .pipe(jshint.reporter('default'));
-//});
 
 gulp.task('watch', function(){
   gulp.watch(['./client/*.js', './client/node_modules/*'],['default']);

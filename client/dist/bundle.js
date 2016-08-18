@@ -7,18 +7,30 @@ var person = {
   name: "Andrew",
   last: "Tattersall",
   DOB: "1979/05/21",
-  gender: "Male"
+  gender: "Man",
+  Address: {
+    street: "Talbot Trail",
+    number: "9016",
+    City: "Blenheim" }
 };
 
 app.controller('appController', function(){
   this.people = person;
-  this.calcAge = function(){
-    var currDate = new Date();
-    var bDate = new Date(people.DOB);
-    var age = currDate - bDate;
-    return age;
-  }
-})
+  this.tab = 0;
+  this.isSet = function(tabVal){
+    if(tabVal === this.tab){
+      return true;
+    }
+  };
+  this.setTab = function(newTab){
+    if(!newTab){
+      this.tab = 0;
+    }
+    else {
+      this.tab = newTab;
+    }
+  };
+});
 
 },{"angular":3}],2:[function(require,module,exports){
 /**

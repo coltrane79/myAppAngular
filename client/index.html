@@ -3,9 +3,30 @@
     <head>
       <meta charset="utf-8">
       <title>Mean App</title>
+      <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     <body ng-controller="appController as empl">
-      <h1> {{ empl.people.name }} </h1>
+      <div>
+        <h1> Personnel Manager </h1>
+      </div>
+      <div>
+        <ul id="tabs" class="tab">
+          <li><a ng-click="empl.setTab(0)">Basic Information</a></li>
+          <li><a ng-click="empl.setTab(1)">Address</a></li>
+          <li><a ng-click="empl.setTab(2)">Work Schedule</a></li>
+          <li><a ng-click="empl.setTab(3)">Salary / Pay Information </a></li>
+          <li><a ng-click="empl.setTab(4)">Job / Position Information </a></li>
+          <li>{{empl.tab}}</li>
+        </ul>
+        <div id="basic" ng-show="empl.isSet(0)">
+          <p>{{empl.people.name}}</p>
+          <p>{{empl.people.last}}</p>
+          <p>{{empl.people.DOB | date: yyyy/mm/dd }}</p>
+          <p>{{empl.people.gender}}
+        </div>
+      </div>
+
+
     </body>
     <script src="dist/bundle.js"></script>
   </html>
