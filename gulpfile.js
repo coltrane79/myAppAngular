@@ -13,6 +13,7 @@ gulp.task('default', function(){
   .bundle()
   .pipe(source('bundle.js'))
   .pipe(gulp.dest('./client/dist'));
+  console.log("finished piping changes to bundle.js");
 });
 
 

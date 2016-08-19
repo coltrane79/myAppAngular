@@ -46,3 +46,15 @@ ul.tab li a, .active{
   background-color: #008CBA;
   color: white;
 }
+
+input {
+  width: 100%
+}
+
+.ng-invalid.ng-dirty {
+  border-color: red;
+}
+
+.ng-valid.ng-dirty {
+  border-color: green;
+}
