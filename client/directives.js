@@ -8,10 +8,10 @@
             restrict: 'E',
             templateUrl: '/views/basic.html',
             controller: ['$http', function($http) {
-                this.person = [];
-                //person = [];
+                var Person = this;
+                person = [];
                 $http.get('data.json').success(function(data) {
-                    this.person = data;
+                    Person.person = data;
                 });
                 this.rw_status = true;
                 this.changeRwStatus = function(status) {
