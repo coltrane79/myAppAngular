@@ -1,80 +1,101 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var angular = require('angular');
 
-var app = angular.module('demoApp',[]);
+var app = angular.module('demoApp', [ 'basic-view' ]);
 
 var person = [{
-  name: "Andrew",
-  last: "Tattersall",
-  DOB: "1979/05/21",
-  gender: "Male",
-  Address: {
-    street: "Talbot Trail",
-    number: "9016",
-    City: "Blenheim" }
-},
-{
-  name: "Sarah",
-  last: "Evans",
-  DOB: "1974/05/21",
-  gender: "Female",
-  Address: {
-    street: "Talbot Trail",
-    number: "9016",
-    City: "Blenheim" }
+    name: "Andrew",
+    last: "Tattersall",
+    DOB: "1979/05/21",
+    gender: "Male",
+    Address: {
+        street: "Talbot Trail",
+        number: "9016",
+        City: "Blenheim"
+    }
+}, {
+    name: "Sarah",
+    last: "Evans",
+    DOB: "1974/05/21",
+    gender: "Female",
+    Address: {
+        street: "Talbot Trail",
+        number: "9016",
+        City: "Blenheim"
+    }
 }];
 
-app.controller('appController', function(){
-  this.people = person;
-  this.rw_status = true;
-  this.newPerson = { };
-  this.tab = 0;
-  this.isSet = function(tabVal){
-    if(tabVal === this.tab){
-      return true;
-    }
-  };
-  this.setTab = function(newTab){
-    if(!newTab){
-      this.tab = 0;
-    }
-    else {
-      this.tab = newTab;
-    }
-  };
-  this.changeRwStatus = function(status){
-    if(status === true){
-      this.rw_status = false;
-      document.getElementById("btn1").innerHTML = "Save";
-    } else {
-      this.rw_status = true;
-      document.getElementById("btn1").innerHTML = "Change";
-    }
-  };
-  this.addPerson = function(){
-
-  };
+app.controller('appController', function() {
+    this.people = person;
+    this.newPerson = {};
+    this.tab = 0;
+    this.isSet = function(tabVal) {
+        if (tabVal === this.tab) {
+            return true;
+        }
+    };
+    this.setTab = function(newTab) {
+        if (!newTab) {
+            this.tab = 0;
+        } else {
+            this.tab = newTab;
+        }
+    };
+    this.addPerson = function() {
+    };
 });
 
-app.controller('basicController', function(){
+app.controller('basicController', function() {
 
 });
 
-app.controller('addrController', function(){
+app.controller('addrController', function() {
 
 });
 
-app.controller('createController',['$scope',function($scope){
-  this.employee = {};
-  $scope.employee = {
-    DOB: new Date(2013, 9, 22)
-  };
-  this.addEmployee = function(emplList){
+app.controller('createController', ['$scope', function($scope) {
+    this.employee = {};
+    $scope.employee = {
+        DOB: new Date(2013, 9, 22)
+    };
+    this.addEmployee = function(emplList) {
 
-  };
+    };
 }]);
 
-},{"angular":3}],2:[function(require,module,exports){
+},{"angular":4}],2:[function(require,module,exports){
+(function() {
+    var angular = require('angular');
+    var app = angular.module('basic-view', []);
+
+
+    app.directive('basicView', function() {
+        return {
+            restrict: 'E',
+            templateUrl: '/views/basic.html',
+            controller: ['$http', function($http) {
+                this.person = [];
+                //person = [];
+                $http.get('data.json').success(function(data) {
+                    this.person = data;
+                });
+                this.rw_status = true;
+                this.changeRwStatus = function(status) {
+                    if (status === true) {
+                        this.rw_status = false;
+                        document.getElementById("btn1").innerHTML = "Save";
+                    } else {
+                        this.rw_status = true;
+                        document.getElementById("btn1").innerHTML = "Change";
+                    }
+                };
+            }],
+            controllerAs: 'staff'
+        }
+    });
+})();
+
+},{"angular":4}],3:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.8
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -31843,8 +31864,8 @@ $provide.value("$locale", {
 })(window);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":2}]},{},[1]);
+},{"./angular":3}]},{},[1,2]);

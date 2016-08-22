@@ -1,0 +1,21 @@
+[{
+    "name": "Andrew",
+    "last": "Tattersall",
+    "DOB": "1979/05/21",
+    "gender": "Male",
+    "Address": {
+        "street": "Talbot Trail",
+        "number": "9016",
+        "City": "Blenheim"
+    }
+}, {
+    "name": "Sarah",
+    "last": "Eevans",
+    "DOB": "1974/12/20",
+    "gender": "Female",
+    "Address": {
+        "street": "Talbot Trail",
+        "number": "9016",
+        "City": "Blenheim"
+    }
+}]

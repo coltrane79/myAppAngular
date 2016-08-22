@@ -1,0 +1,17 @@
+<div ng-repeat="empl in staff.person">
+<label>First Name:
+    <input ng-readonly="staff.rw_status" value="{{empl.name}}"></input>
+</label>
+<label>Last Name:
+    <input ng-readonly="staff.rw_status" value="{{empl.last}}"></input>
+</label>
+<p></p>
+<label>DOB:
+    <input ng-readonly="staff.rw_status" value="{{empl.DOB}}"></input>
+</label>
+<label>Gender:
+    <input ng-readonly="staff.rw_status" value="{{empl.gender}}"></input>
+</label>
+<p></p>
+<button id="btn1" class="button" ng-click="staff.changeRwStatus(staff.rw_status)">Change</button>
+</div>

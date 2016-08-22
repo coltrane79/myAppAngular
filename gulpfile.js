@@ -9,7 +9,7 @@ var fs = require('fs');
 
 gulp.task('default', function(){
   return browserify()
-  .add('./client/app.js')
+  .add(['./client/app.js', './client/directives.js'])
   .bundle()
   .pipe(source('bundle.js'))
   .pipe(gulp.dest('./client/dist'));

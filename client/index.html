@@ -1,49 +1,55 @@
 <!<DOCTYPE html>
-  <html ng-app="demoApp">
-    <head>
-      <meta charset="utf-8">
-      <title>Mean App</title>
-      <link rel="stylesheet" type="text/css" href="styles.css">
-    </head>
-    <body ng-controller="appController as empl">
-      <div>
+<html ng-app="demoApp">
+
+<head>
+    <meta charset="utf-8">
+    <title>Mean App</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">    
+</head>
+
+<body ng-controller="appController as empl">
+    <div>
         <h1> Personnel Manager </h1>
-      </div>
-      <div>
+    </div>
+    <div>
         <ul id="tabs" class="tab">
-          <li><a ng-click="empl.setTab(0)">Basic Information</a></li>
-          <li><a ng-click="empl.setTab(1)">Address</a></li>
-          <li><a ng-click="empl.setTab(2)">Work Schedule</a></li>
-          <li><a ng-click="empl.setTab(3)">Salary / Pay Information </a></li>
-          <li><a ng-click="empl.setTab(4)">Job / Position Information </a></li>
-          <li><a ng-click="empl.setTab(5)">Create New</a></li>
-          <li>{{empl.tab}}</li>
-          <li>{{empl.rw_status}}</li>
+            <li><a ng-click="empl.setTab(0)" ng-class="{ active: empl.isSet(0) }">Basic Information</a></li>
+            <li><a ng-click="empl.setTab(1)" ng-class="{ active: empl.isSet(1) }">Address</a></li>
+            <li><a ng-click="empl.setTab(2)" ng-class="{ active: empl.isSet(2) }">Address</a></li>
+            <li><a ng-click="empl.setTab(3)" ng-class="{ active: empl.isSet(3) }" >Work Schedule</a></li>
+            <li><a ng-click="empl.setTab(4)" ng-class="{ active: empl.isSet(4) }">Salary / Pay Information </a></li>
+            <li><a ng-click="empl.setTab(5)" ng-class="{ active: empl.isSet(5) }">Job / Position Information </a></li>
+            <li><a ng-click="empl.setTab(6)" ng-class="{ active: empl.isSet(6) }">Create New</a></li>
+            <li>{{empl.tab}}</li>
+            <li>{{empl.rw_status}}</li>
         </ul>
-        <div id="basic" ng-show="empl.isSet(0)" ng-repeat="staff in empl.people">
-          <label>First Name: <input ng-readonly="empl.rw_status" value="{{staff.name}}"></input></label>
-          <label>Last Name: <input ng-readonly="empl.rw_status" value="{{staff.last}}"></input></label><p></p>
-          <label>DOB: <input ng-readonly="empl.rw_status" value="{{staff.DOB}}"></input></label>
-          <label>Gender: <input ng-readonly="empl.rw_status" value="{{staff.gender}}"></input></label><p></p>
-          <button id="btn1" class="button" ng-click="empl.changeRwStatus(staff.rw_status)">Change</button>
+        <div id="basic" ng-show="empl.isSet(0)">
+            <basic-view></basic-view>
         </div>
         <div id="basic" ng-show="empl.isSet(1)">
-          <p>{{empl.people.Address.street}}</p>
-          <p>{{empl.people.Address.number}}</p>
-          <p>{{empl.people.Address.City}}</p>
+            <p>{{empl.people.Address.street}}</p>
+            <p>{{empl.people.Address.number}}</p>
+            <p>{{empl.people.Address.City}}</p>
         </div>
-        <div ng-show="empl.isSet(5)">
-          <form name="newEmpl" ng-controller="createController as createCtrl" ng-submit="create.addEmployee(empl)"  novalidate>
-            <label>First Name: <input ng-model="createCtrl.employee.name"></input></label>
-            <label>Last Name: <input ng-model="createCtrl.employee.last"></input></label><p></p>
-            <label>DOB: <input type="date"ng-model="createCtrl.employee.DOB"></input></label>
-            <label>Gender: <input ng-model="createCtrl.employee.gender"></input></label><p></p>
-            <p>{{createCtrl.employee.name}}</p>
-            {{createCtrl.employee.last}}
-            {{createCtrl.employee.DOB}}
-            {{createCtrl.employee.gender}}
-            {{newEmpl.input.$valid}}
-            <tt>value = {{createCtrl.employee.DOB | date: "yyyy-mm-dd"}}</tt?
+        <div ng-show="empl.isSet(6)">
+            <form name="newEmpl" ng-controller="createController as createCtrl" ng-submit="create.addEmployee(empl)" novalidate>
+                <label>First Name:
+                    <input ng-model="createCtrl.employee.name"></input>
+                </label>
+                <label>Last Name:
+                    <input ng-model="createCtrl.employee.last"></input>
+                </label>
+                <p></p>
+                <label>DOB:
+                    <input type="date" ng-model="createCtrl.employee.DOB"></input>
+                </label>
+                <label>Gender:
+                    <input ng-model="createCtrl.employee.gender"></input>
+                </label>
+                <p></p>
+                <p>{{createCtrl.employee.name}}</p>
+                {{createCtrl.employee.last}} {{createCtrl.employee.DOB}} {{createCtrl.employee.gender}} {{newEmpl.input.$valid}}
+                <tt>value = {{createCtrl.employee.DOB | date: "yyyy-mm-dd"}}</tt?
           <form>
         </div>
       </div>
